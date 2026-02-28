@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glowl.etic · Floresce tu energía</title>
+    <!-- Font Awesome para iconos bonitos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(145deg, #fff9f7 0%, #fff1f0 100%);
+            color: #4a3b3b;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        /* Header con flor y nombre */
+        .hero {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .flower-icon {
+            font-size: 4rem;
+            color: #f9a8a1;
+            filter: drop-shadow(0 8px 12px rgba(249, 168, 161, 0.2));
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0px); }
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 400;
+            letter-spacing: 3px;
+            color: #c06c6c;
+            margin-top: 0.5rem;
+            line-height: 1.2;
+            text-shadow: 2px 2px 10px rgba(192, 108, 108, 0.1);
+        }
+
+        .glow-dot {
+            color: #f5b3aa;
+            font-size: 2rem;
+            display: inline-block;
+            margin: 0 0.2rem;
+        }
+
+        .subhead {
+            font-size: 1.3rem;
+            color: #a17e7e;
+            max-width: 600px;
+            margin: 1rem auto 0;
+            border-bottom: 2px solid #fad2cf;
+            padding-bottom: 1.2rem;
+            font-weight: 300;
+            font-style: italic;
+        }
+
+        .subhead i {
+            color: #d99c9c;
+            margin: 0 0.3rem;
+        }
+
+        /* Frase mantra (tomada de tu concepto) */
+        .mantra {
+            background: #fff6f4;
+            padding: 1.2rem 1rem;
+            border-radius: 60px;
+            display: inline-block;
+            margin: 1.5rem auto 2rem;
+            box-shadow: 0 6px 14px #fadedb;
+            border: 1px solid #ffe3df;
+            font-weight: 400;
+            color: #8b5e5e;
+            font-size: 1.25rem;
+        }
+
+        .mantra i {
+            color: #f09f97;
+            margin: 0 8px;
+        }
+
+        /* Grilla de 4 secciones principales */
+        .grid-four {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.8rem;
+            margin: 3rem 0;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(4px);
+            border-radius: 32px;
+            padding: 2rem 1.2rem 1.8rem;
+            text-align: center;
+            box-shadow: 0 20px 30px -10px #f0cfcb;
+            border: 1px solid #fff0ed;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.02);
+            background: #ffffffc2;
+            border-color: #fccac5;
+        }
+
+        .card-icon {
+            font-size: 3.5rem;
+            color: #eba09a;
+            margin-bottom: 0.8rem;
+        }
+
+        .card h3 {
+            font-size: 2rem;
+            font-weight: 350;
+            color: #b47373;
+            letter-spacing: 1px;
+            border-bottom: 2px dotted #fccac5;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.2rem;
+        }
+
+        /* mini galeria dentro de cada card (fotos) */
+        .fotos-mini {
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+            margin: 1.2rem 0 1rem;
+        }
+
+        .foto-item {
+            background: #ffeae7;
+            border-radius: 28px;
+            padding: 0.7rem 0.9rem;
+            font-size: 1rem;
+            color: #8b5e5e;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border: 1px solid #ffdbd6;
+            box-shadow: inset 0 1px 4px #ffe3de;
+        }
+
+        .foto-item i {
+            font-size: 1.6rem;
+            color: #f9aca4;
+            width: 32px;
+            text-align: center;
+        }
+
+        .foto-item span {
+            font-weight: 350;
+        }
+
+        .foto-item small {
+            margin-left: auto;
+            color: #cb9b9b;
+            font-size: 0.8rem;
+            font-style: italic;
+        }
+
+        .btn-ver {
+            background: transparent;
+            border: 1.5px solid #f5b1aa;
+            color: #b16363;
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: 0.2s;
+            margin-top: 1rem;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .btn-ver:hover {
+            background: #fad2cf;
+            border-color: #e6a09a;
+            color: #7a4f4f;
+        }
+
+        /* Sección de inspo / frases */
+        .inspo-quote {
+            background: #f9eae7;
+            border-radius: 60px 60px 30px 30px;
+            padding: 2.5rem 2rem;
+            margin: 4rem 0;
+            text-align: center;
+            border: 1px solid #ffd9d2;
+            box-shadow: 0 10px 18px #ebc7c1;
+        }
+
+        .inspo-quote i {
+            font-size: 2.8rem;
+            color: #f5b1aa;
+            opacity: 0.5;
+        }
+
+        .inspo-quote p {
+            font-size: 1.9rem;
+            font-weight: 280;
+            color: #a86f6f;
+            max-width: 800px;
+            margin: 1rem auto;
+            line-height: 1.4;
+        }
+
+        .inspo-quote .autor {
+            color: #b58383;
+            letter-spacing: 2px;
+            font-weight: 300;
+        }
+
+        /* Bloques de ejemplo de rutina / glow */
+        .extra-flowers {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .glow-card {
+            background: white;
+            border-radius: 40px;
+            padding: 1.8rem;
+            flex: 1 1 220px;
+            border: 1px solid #ffd2cb;
+            box-shadow: 0 10px 15px #f3d9d5;
+        }
+
+        .glow-card h4 {
+            font-size: 1.5rem;
+            font-weight: 350;
+            margin-bottom: 1.2rem;
+            color: #b96f6f;
+        }
+
+        .glow-list {
+            list-style: none;
+        }
+
+        .glow-list li {
+            margin: 0.9rem 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px dashed #f0cfcb;
+            padding-bottom: 0.5rem;
+        }
+
+        .glow-list i {
+            color: #f5a69e;
+            width: 24px;
+        }
+
+        /* footer y enlace a instagram */
+        .instagram-link {
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .btn-instagram {
+            background: #fff3f0;
+            border: 2px solid #fbc9c2;
+            color: #b35959;
+            padding: 1rem 3rem;
+            border-radius: 50px;
+            font-size: 1.4rem;
+            font-weight: 400;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px #f3c3bd;
+        }
+
+        .btn-instagram i {
+            font-size: 2rem;
+            color: #d47c7c;
+        }
+
+        .btn-instagram:hover {
+            background: #ffded9;
+            border-color: #e8aca4;
+            transform: scale(1.02);
+        }
+
+        .footer-note {
+            margin: 2.5rem 0 1rem;
+            color: #b69191;
+            font-size: 1rem;
+        }
+
+        hr {
+            border: none;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #ffcec7, transparent);
+            margin: 2.5rem 0;
+        }
+
+        /* responsive */
+        @media (max-width: 800px) {
+            .grid-four {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 500px) {
+            .grid-four {
+                grid-template-columns: 1fr;
+            }
+            h1 {
+                font-size: 2.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Glowl.etic con flor -->
+        <div class="hero">
+            <div class="flower-icon">🌸</div>
+            <h1>glowl.etic</h1>
+            <div class="subhead">
+                <i class="fas fa-seedling"></i> florecer también es disciplina <i class="fas fa-seedling"></i>
+            </div>
+            <div class="mantra">
+                <i class="fas fa-bolt"></i> suave pero fuerte · energía · evolución <i class="fas fa-bolt"></i>
+            </div>
+        </div>
+
+        <!-- SECCIONES PRINCIPALES (4) con fotos de ejemplo -->
+        <div class="grid-four">
+            <!-- 1. DEPORTE / EJERCICIOS -->
+            <div class="card">
+                <div class="card-icon">💪✨</div>
+                <h3>movimiento</h3>
+                <div class="fotos-mini">
+                    <div class="foto-item">
+                        <i class="fas fa-dumbbell"></i>
+                        <span>Rutina full body · 20min</span>
+                        <small>🌸</small>
+                    </div>
+                    <div class="foto-item">
+                        <i class="fas fa-heart"></i>
+                        <span>Yoga glow · flexibilidad</span>
+                        <small>🌿</small>
+                    </div>
+                    <div class="foto-item">
+                        <i class="fas fa-shoe-prints"></i>
+                        <span>Cardio quema suave</span>
+                        <small>✨</small>
+                    </div>
+                    <div class="foto-item">
+                        <i class="fas fa-moon"></i>
+                        <span>Estiramientos noche</span>
+                        <small>💫</small>
+                    </div>
+                </div>
+                <a href="#" class="btn-ver">ver más +</a>
+            </div>
+
+            <!-- 2. COMIDAS -->
+            <div class="card">
+                <div class="card-icon">🍽️🥗</div>
+                <h3>nutrición</h3>
+                <div class="fotos-mini">
+                    <div class="foto-item">
+                        <i class="fas fa-bowl-food"></i>
+                        <span>Bowls proteinados</span>
+                        <small>🍚</small>
+                    </div>
+                    <div class="foto-item">
+                        <i class="fas fa-egg"></i>
+                        <span>Desayunos energía</span>
+                        <small>🍓</small>
+                    </div>
+                    <div class="foto-item">
+                        <i class="fas fa-fish"></i>
+                        <span>Cenas ligeras · fit</span>
+                        <small>🥑</small>
+                    </div>
+                    <div class="foto-item">
+                        <i class="fas fa-cookie-bite"></i>
+                        <span>Snacks sanos</span>
+                        <small>🌰</small>
+                    </div>
+                </div>
+                <a href="#" class="btn-ver">recetario</a>
+            </div>
+
+            <!-- 3. TES -->
+            <div class="card">
+                <div class="card-icon">🍵🫖</div>
+                <h3>infusiones</h3>
+                <div class="fotos-mini">
+                    <div class="foto-item">
+                        <i class="fas fa-leaf"></i>
+                        <span>Té verde · matcha glow</span>
+                        <small>🍃</small>
+                    </div>
+                    <div class="foto-item">
+                        <i class="fas fa-fire"></i>
+                        <span>Jengibre & cúrcuma</span>
+                        <small>🌟</small>
+                    </div>
+                    <div class="foto-item">
+                        <i class="fas fa-mug-saucer"></i>
+                        <span>Rooibos vainilla</span>
+                        <small>🌼</small>
+                    </div>
+                    <div class="foto-item">
+                        <i class="fas fa-spa"></i>
+                        <span>Tisana noche relax</span>
+                        <small>🕯️</small>
+                    </div>
+                </div>
+                <a href="#" class="btn-ver">mezclas</a>
+            </div>
+
+            <!-- 4. ZUMOS NATURALES -->
+            <div class="card">
+                <div class="card-icon">🧃🥤</div>
+                <h3>zumos vivos</h3>
+                <div class="fotos-mini">
+                    <div class="foto-item">
+                        <i class="fas fa-carrot"></i>
+                        <span>Zumo verde detox</span>
+                        <small>🥬</small>
+                    </div>
+                    <div class="foto-item">
+                        <i class="fas fa-apple-alt"></i>
+                        <span>Remolacha & manzana</span>
+                        <small>🍎</small>
+                    </div>
+                    <div class="foto-item">
+                        <i class="fas fa-lemon"></i>
+                        <span>Limonada cúrcuma</span>
+                        <small>🍋</small>
+                    </div>
+                    <div class="foto-item">
+                        <i class="fas fa-pumpkin"></i>
+                        <span>Zanahoria & naranja</span>
+                        <small>🥕</small>
+                    </div>
+                </div>
+                <a href="#" class="btn-ver">cold press</a>
+            </div>
+        </div>
+
+        <!-- Bloque de cita inspo (frase de tu idea) -->
+        <div class="inspo-quote">
+            <i class="fas fa-quote-left"></i>
+            <p>No es solo estética, es transformación suave, fuerza femenina, glow interno + externo.</p>
+            <div class="autor">✨ glowinbloom · florece tu poder ✨</div>
+        </div>
+
+        <!-- Detalles destacados estilo "highlights" de IG pero en web -->
+        <div class="extra-flowers">
+            <div class="glow-card">
+                <h4><i class="fas fa-star" style="color: #f9a8a1;"></i> hábitos glow</h4>
+                <ul class="glow-list">
+                    <li><i class="fas fa-check-circle"></i> Mañanas con intención</li>
+                    <li><i class="fas fa-check-circle"></i> Movimiento diario 10'</li>
+                    <li><i class="fas fa-check-circle"></i> Hidratación consciente</li>
+                    <li><i class="fas fa-check-circle"></i> Skin food</li>
+                </ul>
+            </div>
+            <div class="glow-card">
+                <h4><i class="fas fa-heart" style="color: #f9a8a1;"></i> rutinas destacadas</h4>
+                <ul class="glow-list">
+                    <li><i class="fas fa-dumbbell"></i> Fuerza sutil · glúteos</li>
+                    <li><i class="fas fa-spa"></i> Yoga facial 🌸</li>
+                    <li><i class="fas fa-wind"></i> Respiración antiestrés</li>
+                    <li><i class="fas fa-sun"></i> Power walk mañanero</li>
+                </ul>
+            </div>
+            <div class="glow-card">
+                <h4><i class="fas fa-seedling" style="color: #f9a8a1;"></i> zumo de la semana</h4>
+                <ul class="glow-list">
+                    <li><i class="fas fa-apple-alt"></i> Pepino + apio + espinaca</li>
+                    <li><i class="fas fa-apple-alt"></i> Piña + jengibre + menta</li>
+                    <li><i class="fas fa-apple-alt"></i> Zanahoria + naranja + cúrcuma</li>
+                </ul>
+            </div>
+        </div>
+
+        <hr>
+
+        <!-- ENLACE A INSTAGRAM (lo que pide tu idea, para la bio) -->
+        <div class="instagram-link">
+            <p style="color:#b37b7b; margin-bottom:1.2rem; font-size:1.2rem;">sigue el glow en instagram 🌸</p>
+            <a href="#" class="btn-instagram" target="_blank">
+                <i class="fab fa-instagram"></i> @glowinbloom
+            </a>
+            <div class="footer-note">
+                <i class="fas fa-arrow-up"></i> da vida a tu feed · #glowenflor
+            </div>
+        </div>
+
+        <!-- frase fija para reels (la incluimos visualmente en web) -->
+        <div style="text-align: center; margin-top: 2rem; opacity: 0.7; background: #fff5f2; border-radius: 60px; padding: 0.8rem;">
+            <span style="color: #b67373;">🌸 “Florecer también es disciplina” · glowl.etic 🌸</span>
+        </div>
+
+        <!-- Pequeño aviso sin personas solo vibra -->
+        <div style="text-align: center; font-size: 0.9rem; color: #d3a4a4; margin-top: 2rem;">
+            <i class="fas fa-flower"></i> solo energía, flores y glow · sin rostros, solo esencia <i class="fas fa-flower"></i>
+        </div>
+    </div>
+</body>
+</html>
